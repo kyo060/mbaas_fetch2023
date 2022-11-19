@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -9,38 +10,40 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="keys.js"></script>
     <script>
-    // NCMB アクセスの準備
-    var ncmb = new NCMB(appKey, clientKey);
-    // 利用するデータベースを指定（存在しなければ生成）
-    var TestClass = ncmb.DataStore("FetchTest");
+        // NCMB アクセスの準備
+        var ncmb = new NCMB(appKey, clientKey);
+        // 利用するデータベースを指定（存在しなければ生成）
+        var TestClass = ncmb.DataStore("FetchTest");
 
-    function register() {
-      // 登録するレコードを用意
-      var testClass = new TestClass();
-      var key = "text";
-      var value = $("#value").val();
-      // レコードのフィールドと値を設定
-      testClass.set(key, value);
-      // レコードをデータベースに登録
-      testClass.save()
-      .then(function(m) {
-        $("#message").html("New object created with objectId: " + testClass.objectId);
-      })
-      .catch(function(err){
-        $("#message").html("Failed to create new object, with error code: " + JSON.stringify(err));
-      })
-    }
+        function register() {
+            // 登録するレコードを用意
+            var testClass = new TestClass();
+            var key = "text";
+            var value = $("#value").val();
+            // レコードのフィールドと値を設定
+            testClass.set(key, value);
+            // レコードをデータベースに登録
+            testClass.save()
+                .then(function(m) {
+                    $("#message").html("New object created with objectId: " + testClass.objectId);
+                })
+                .catch(function(err) {
+                    $("#message").html("Failed to create new object, with error code: " + JSON.stringify(err));
+                })
+        }
     </script>
 </head>
+
 <body>
-  <h1>mBaaS fetch</h1>
-  <div>
-    <label for="value">Value:</label>
-    <input id="value" type="text" value="Hello, mBaaS!">
-  </div>
-  <div id="button">
-    <button id="btnA" class="btn" onclick="register()">Register</button>
-  </div>
-  <div id="message">message area</div>
+    <h1>mBaaS fetch</h1>
+    <div>
+        <label for="value">Value:</label>
+        <input id="value" type="text" value="Hello, mBaaS!">
+    </div>
+    <div id="button">
+        <button id="btnA" class="btn" onclick="register()">Register</button>
+    </div>
+    <div id="message">message area</div>
 </body>
+
 </html>
