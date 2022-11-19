@@ -11,21 +11,21 @@
     <script src="keys.js"></script>
     <script>
         // NCMB アクセスの準備
-        var ncmb = new NCMB(appKey, clientKey);
+        let ncmb = new NCMB(appKey, clientKey);
         // 利用するデータベースを指定（存在しなければ生成）
-        var TestClass = ncmb.DataStore("FetchTest");
+        let TestClass = ncmb.DataStore("FetchTest");
 
         function register() {
             // 登録するレコードを用意
-            var testClass = new TestClass();
-            var key = "text";
-            var value = $("#value").val();
+            let testRecord = new TestClass();
+            let key = "text";
+            let value = $("#value").val();
             // レコードのフィールドと値を設定
-            testClass.set(key, value);
+            testRecord.set(key, value);
             // レコードをデータベースに登録
-            testClass.save()
+            testRecord.save()
                 .then(function(m) {
-                    $("#message").html("New object created with objectId: " + testClass.objectId);
+                    $("#message").html("New object created with objectId: " + testRecord.objectId);
                 })
                 .catch(function(err) {
                     $("#message").html("Failed to create new object, with error code: " + JSON.stringify(err));
