@@ -23,6 +23,19 @@
         })
         }
 
+        function fetchAll(){
+            var TestClass = ncmb.DataStore("FetchTest");
+            TestClass.fetchAll().then(function(results){
+                let msg = "";
+                for(let i = 0; i < results.length; i++){
+                    let data = results[i].get("text");
+                    let update = results[i].get("updateDate");
+                    msg += data + ":" + update;
+                }
+                $("#message").html(msg);
+            })
+        }
+
         function register() {
             // 登録するレコードを用意
             let testRecord = new TestClass();
@@ -51,7 +64,7 @@
     <div id="button">
         <button id="btnA" class="btn" onclick="register()">Register</button>
         <button id="btnB" class="btn" onclick="fetch()">Fetch </button>
-         <button id="btnC" class="btn" onclick="fetch All()">Fetch All</button>
+         <button id="btnC" class="btn" onclick="fetchAll()">Fetch All</button>
     </div>
     <div id="message">message area</div>
 </body>
