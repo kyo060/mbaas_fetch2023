@@ -30,7 +30,7 @@
                 for(let i = 0; i < results.length; i++){
                     let data = results[i].get("text");
                     let update = results[i].get("updateDate");
-                    msg += data + ":" + update;
+                    msg += data + ":" + update+ "<br>";
                 }
                 $("#message").html(msg);
             })
